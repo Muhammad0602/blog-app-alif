@@ -6,6 +6,7 @@ import { getPosts } from '../redux/posts/postsSlice';
 function Home() {
   const { posts, isLoading, error } = useSelector((store) => store.posts);
   const dispatch = useDispatch();
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     dispatch(getPosts());
@@ -37,6 +38,11 @@ function Home() {
 
   return (
     <div className="posts-container">
+        <input 
+        type="search" 
+        onChange={(e) => setSearch(e.target.value)} 
+        placeholder='search posts by name'
+        />
       <h1>List of our Posts</h1>
       <div className="items-per-page">
         <label>Items per page:</label>
@@ -49,7 +55,10 @@ function Home() {
           <option value={50}>50</option>
         </select>
       </div>
-      {currentPosts.map((post) => (
+      {currentPosts.filter(item => {
+        return search.toLowerCase() === "" ? item : 
+        item.title.toLowerCase().includes(search)
+      }).map((post) => (
         <Link
           to={`/Details/${post.id}`}
           key={post.id}
