@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getPosts } from '../redux/posts/postsSlice';
+import { setCurrentPage, setItemsPerPage, setCurrentPosts} from '../redux/posts/postsSlice';
 
 function Home() {
-  const { posts, isLoading, error } = useSelector((store) => store.posts);
+  const { posts, isLoading, error, currentPage, itemsPerPage, currentPosts } = useSelector((store) => store.posts);
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
 
@@ -12,12 +13,9 @@ function Home() {
     dispatch(getPosts());
   }, [dispatch]);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
-
-  const indexOfLastPost = currentPage * itemsPerPage;
-  const indexOfFirstPost = indexOfLastPost - itemsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  useEffect(() => {
+    dispatch(setCurrentPosts(posts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)))
+  }, [itemsPerPage, currentPage, posts])
 
   if (isLoading) {
     return (
@@ -41,14 +39,14 @@ function Home() {
         <input 
         type="search" 
         onChange={(e) => setSearch(e.target.value)} 
-        placeholder='search posts by name'
+        placeholder='search post by its title'
         />
       <h1>List of our Posts</h1>
       <div className="items-per-page">
         <label>Items per page:</label>
         <select
           value={itemsPerPage}
-          onChange={(e) => setItemsPerPage(Number(e.target.value))}
+          onChange={(e) => dispatch(setItemsPerPage(Number(e.target.value)))}
         >
           <option value={10}>10</option>
           <option value={20}>20</option>
@@ -70,15 +68,15 @@ function Home() {
       ))}
       <div className="pagination-controls">
         <button
-          onClick={() => setCurrentPage(currentPage - 1)}
+          onClick={() => dispatch(setCurrentPage(currentPage - 1))}
           disabled={currentPage === 1}
           className="pagination-button"
         >
           Previous
         </button>
         <button
-          onClick={() => setCurrentPage(currentPage + 1)}
-          disabled={indexOfLastPost >= posts.length}
+          onClick={() => dispatch(setCurrentPage(currentPage + 1))}
+          disabled={ posts.length <= currentPage*itemsPerPage}
           className="pagination-button"
         >
           Next

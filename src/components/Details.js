@@ -30,11 +30,12 @@ function Details() {
           <h1 className="post-title">{post.title}</h1>
           <p className="post-body">{post.body}</p>
           <div className="comments-container">
-            <h2 className="comments-title">Most Recent Comments</h2>
+            <h2 className="comments-title">Most Recent Comments:</h2>
             {comments?.map((comment) => (
               <div key={comment.id} className="comment">
-                <h3 className="comment-name">{comment.name}</h3>
-                <p className="comment-body">{comment.body}</p>
+                <h3 className="comment-name">Name: {comment.name}</h3>
+                <h4>Email: {comment.email}</h4>
+                <p className="comment-body"><strong>Message: </strong>{comment.body}</p>
               </div>
             ))}
           </div>

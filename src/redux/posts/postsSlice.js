@@ -3,6 +3,9 @@ import axios from 'axios';
 
 export const initialState = {
   posts: [],
+  currentPage: 1,
+  itemsPerPage: 10,
+  currentPosts: [],
   isLoading: false,
   error: '',
 };
@@ -28,7 +31,9 @@ export const getPosts = createAsyncThunk('posts/getPosts', async () => {
 export const PostsSlice = createSlice({
   name: 'Posts',
   initialState,
-  reducers: {},
+  reducers: {setCurrentPage: (state, action) => {state.currentPage = action.payload},
+            setItemsPerPage: (state, action) => {state.itemsPerPage = action.payload},
+            setCurrentPosts: (state, action) => {state.currentPosts = action.payload}},
   extraReducers: (builder) => {
     builder
       .addCase(getPosts.pending, (state) => ({ ...state, isLoading: true }))
@@ -57,6 +62,6 @@ export const PostsSlice = createSlice({
   },
 });
 
-export const { clearSlice } = PostsSlice.actions;
+export const { setCurrentPage, setItemsPerPage, setCurrentPosts } = PostsSlice.actions;
 
 export default PostsSlice.reducer;
