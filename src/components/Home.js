@@ -18,11 +18,7 @@ function Home() {
   const [search, setSearch] = useState('');
   const [selectedUsers, setSelectedUsers] = useState([]);
 
-//   const blogId = Math.floor(Math.random()*5) + 1;
-
   const blogArray = [blog1, blog2, blog3, blog4, blog5];
-
-//   const postImage = <img src={blogArray[blogId]} />;
 
   const userCategories = [
     { userId: 1, category: 'Technology' },
@@ -44,8 +40,17 @@ function Home() {
   useEffect(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const lastIndex = currentPage * itemsPerPage;
-    dispatch(setCurrentPosts(posts.slice(startIndex, lastIndex)));
-  }, [itemsPerPage, currentPage, posts, dispatch]);
+    let results = [...posts];
+    
+    if(search) {
+        results = results.filter(post => 
+            post.title.toLowerCase().includes(search));
+    }
+    if(selectedUsers.length) {
+        results = results.filter(post =>selectedUsers.includes(post.userId))
+    }
+    dispatch(setCurrentPosts(results.slice(startIndex, lastIndex)));
+  }, [itemsPerPage, currentPage, posts, dispatch, search, selectedUsers.length]);
 
   const handleUserSelection = (userId) => {
     if (selectedUsers.includes(userId)) {
@@ -108,10 +113,7 @@ function Home() {
       </div>
 
       <div className="posts-container">
-        {currentPosts
-          .filter((item) => search.toLowerCase() === '' || item.title.toLowerCase().includes(search))
-          .filter((item) => selectedUsers.length === 0 || selectedUsers.includes(item.userId))
-          .map((post) => {
+        {currentPosts.map((post) => {
             const blogId = Math.floor(Math.random()*5);
             return <Link
               to={`/Details/${post.id}`}
@@ -119,9 +121,7 @@ function Home() {
               className="post-container"
             >
               <img src={blogArray[blogId]} /> 
-              {/* {postImage} */}
               <h3>{post.title}</h3>
-              {/* <p>{post.body}</p> */}
             </Link>
 })}
       </div>
