@@ -20,17 +20,17 @@ body {
   color: white;
 }
 
- .search-input {
+.search-input {
   padding: 0.4rem 0.8rem;
   border-radius: 0.4rem;
 }
 
- .search-input:placeholder-shown {
+.search-input:placeholder-shown {
   font-style: italic;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
- .search-input::placeholder {
+.search-input::placeholder {
   color: black;
   opacity: 0.6;
 }
@@ -125,7 +125,6 @@ body {
 
 /* Details page */
 
-
 .details-container {
   /* max-width: 800px; */
   margin: 0 auto;
@@ -144,7 +143,7 @@ body {
 }
 
 .back-button:hover {
-  color:rgb(27, 194, 12);
+  color: rgb(27, 194, 12);
   font-size: 1.3rem;
 }
 
@@ -202,7 +201,6 @@ body {
     border-right-color: rgb(221, 214, 18);
   }
 }
-
 
 @media (max-width: 600px) {
   .search-features {
