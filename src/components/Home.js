@@ -84,7 +84,6 @@ function Home() {
           ))}
         </div>
         <div className="items-per-page">
-          {/* <label>Items per page:</label> */}
           <p>Items per page:</p>
           <select
             value={itemsPerPage}
