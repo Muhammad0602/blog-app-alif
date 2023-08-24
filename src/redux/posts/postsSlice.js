@@ -4,7 +4,7 @@ import axios from 'axios';
 export const initialState = {
   posts: [],
   currentPage: 1,
-  itemsPerPage: 10,
+  itemsPerPage: 50,
   currentPosts: [],
   isLoading: false,
   error: '',
@@ -18,15 +18,6 @@ export const getPosts = createAsyncThunk('posts/getPosts', async () => {
     throw error.response.data.error;
   }
 });
-
-// export const getSurah = createAsyncThunk('surah/getSurah', async (number) => {
-//   try {
-//     const response = await axios.get(`http://api.alquran.cloud/v1/surah/${number}`);
-//     return response.data.data;
-//   } catch (error) {
-//     throw error.response.data.error;
-//   }
-// });
 
 export const PostsSlice = createSlice({
   name: 'Posts',
@@ -47,18 +38,6 @@ export const PostsSlice = createSlice({
         isLoading: false,
         error: action.payload,
       }))
-
-    //   .addCase(getSurah.pending, (state) => ({ ...state, isLoading: true }))
-    //   .addCase(getSurah.fulfilled, (state, action) => ({
-    //     ...state,
-    //     isLoading: false,
-    //     posts: action.payload,
-    //   }))
-    //   .addCase(getSurah.rejected, (state, action) => ({
-    //     ...state,
-    //     isLoading: false,
-    //     error: action.payload,
-    //   }));
   },
 });
 
