@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getComments } from '../redux/comments/commentsSlice';
 import { BiArrowBack } from 'react-icons/bi';
+import { getComments } from '../redux/comments/commentsSlice';
 
 function Details() {
   const { id } = useParams();
@@ -33,9 +33,18 @@ function Details() {
             <h2 className="comments-title">Most Recent Comments:</h2>
             {comments?.map((comment) => (
               <div key={comment.id} className="comment">
-                <h3 className="comment-name">Name: {comment.name}</h3>
-                <h4>Email: {comment.email}</h4>
-                <p className="comment-body"><strong>Message: </strong>{comment.body}</p>
+                <h3 className="comment-name">
+                  Name:
+                  {comment.name}
+                </h3>
+                <h4>
+                  Email:
+                  {comment.email}
+                </h4>
+                <p className="comment-body">
+                  <strong>Message: </strong>
+                  {comment.body}
+                </p>
               </div>
             ))}
           </div>

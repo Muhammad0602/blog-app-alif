@@ -22,9 +22,11 @@ export const getPosts = createAsyncThunk('posts/getPosts', async () => {
 export const PostsSlice = createSlice({
   name: 'Posts',
   initialState,
-  reducers: {setCurrentPage: (state, action) => {state.currentPage = action.payload},
-            setItemsPerPage: (state, action) => {state.itemsPerPage = action.payload},
-            setCurrentPosts: (state, action) => {state.currentPosts = action.payload}},
+  reducers: {
+    setCurrentPage: (state, action) => { state.currentPage = action.payload; },
+    setItemsPerPage: (state, action) => { state.itemsPerPage = action.payload; },
+    setCurrentPosts: (state, action) => { state.currentPosts = action.payload; },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getPosts.pending, (state) => ({ ...state, isLoading: true }))
@@ -37,7 +39,7 @@ export const PostsSlice = createSlice({
         ...state,
         isLoading: false,
         error: action.payload,
-      }))
+      }));
   },
 });
 

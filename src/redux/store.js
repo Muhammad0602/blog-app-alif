@@ -5,7 +5,7 @@ import commentsReducer from './comments/commentsSlice';
 const store = configureStore({
   reducer: {
     posts: postsReducer,
-    comments: commentsReducer
+    comments: commentsReducer,
   },
 });
 
