@@ -41,13 +41,12 @@ function Home() {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const lastIndex = currentPage * itemsPerPage;
     let results = [...posts];
-    
-    if(search) {
-        results = results.filter(post => 
-            post.title.toLowerCase().includes(search));
+
+    if (search) {
+      results = results.filter((post) => post.title.toLowerCase().includes(search));
     }
-    if(selectedUsers.length) {
-        results = results.filter(post =>selectedUsers.includes(post.userId))
+    if (selectedUsers.length) {
+      results = results.filter((post) => selectedUsers.includes(post.userId));
     }
     dispatch(setCurrentPosts(results.slice(startIndex, lastIndex)));
   }, [itemsPerPage, currentPage, posts, dispatch, search, selectedUsers.length]);
@@ -114,16 +113,18 @@ function Home() {
 
       <div className="posts-container">
         {currentPosts.map((post) => {
-            const blogId = Math.floor(Math.random()*5);
-            return <Link
+          const blogId = Math.floor(Math.random() * 5);
+          return (
+            <Link
               to={`/Details/${post.id}`}
               key={post.id}
               className="post-container"
             >
-              <img src={blogArray[blogId]} /> 
+              <img src={blogArray[blogId]} alt="blog-post" />
               <h3>{post.title}</h3>
             </Link>
-})}
+          );
+        })}
       </div>
 
       <div className="pagination-controls">

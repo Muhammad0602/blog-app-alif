@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { BiArrowBack } from 'react-icons/bi';
-import {FaCircleUser} from 'react-icons/fa6'
+import { FaCircleUser } from 'react-icons/fa6';
 import { getComments } from '../redux/comments/commentsSlice';
 
 function Details() {
@@ -34,15 +34,17 @@ function Details() {
             <h2 className="comments-title"> Recent Comments:</h2>
             {comments?.map((comment) => (
               <div key={comment.id} className="comment">
-                <div className='user'>
-                   <FaCircleUser className='user-photo'/>
-                <h3 className="comment-name">
-                  {comment.name.slice(0, 12)}
-                </h3>
+                <div className="user">
+                  <FaCircleUser className="user-photo" />
+                  <h3 className="comment-name">
+                    {comment.name.slice(0, 12)}
+                  </h3>
                 </div>
-               
+
                 <p className="comment-body">
-                  " {comment.body} "
+                  &quot;
+                  {comment.body}
+                  &quot;
                 </p>
               </div>
             ))}

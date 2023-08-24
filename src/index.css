@@ -57,9 +57,11 @@ body {
   padding: 10px;
   text-decoration: none;
   color: #333;
+
   /* display: block; */
   display: flex;
   flex-direction: column;
+
   /* justify-content: center; */
   align-items: center;
   border-radius: 0.5rem;
@@ -179,7 +181,7 @@ body {
 }
 
 .comment {
-  border-bottom: 1px solid #ddddddcc;
+  border-bottom: 1px solid #dddc;
   padding: 10px;
   margin-bottom: 10px;
 }
@@ -197,7 +199,7 @@ body {
 
 .comment-name {
   font-size: 25px;
-  color: rgba(46, 214, 63, 0.67)
+  color: rgba(46, 214, 63, 0.67);
 }
 
 .comment-body {
