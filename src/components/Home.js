@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import blog1 from '../blog-alif/blog1.jpg';
+import blog2 from '../blog-alif/blog2.png';
+import blog3 from '../blog-alif/blog3.png';
+import blog4 from '../blog-alif/blog4.jpeg';
+import blog5 from '../blog-alif/blog5.jpeg';
 import {
   getPosts, setCurrentPage, setItemsPerPage, setCurrentPosts,
 } from '../redux/posts/postsSlice';
@@ -12,6 +17,12 @@ function Home() {
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
   const [selectedUsers, setSelectedUsers] = useState([]);
+
+//   const blogId = Math.floor(Math.random()*5) + 1;
+
+  const blogArray = [blog1, blog2, blog3, blog4, blog5];
+
+//   const postImage = <img src={blogArray[blogId]} />;
 
   const userCategories = [
     { userId: 1, category: 'Technology' },
@@ -100,16 +111,19 @@ function Home() {
         {currentPosts
           .filter((item) => search.toLowerCase() === '' || item.title.toLowerCase().includes(search))
           .filter((item) => selectedUsers.length === 0 || selectedUsers.includes(item.userId))
-          .map((post) => (
-            <Link
+          .map((post) => {
+            const blogId = Math.floor(Math.random()*5);
+            return <Link
               to={`/Details/${post.id}`}
               key={post.id}
               className="post-container"
             >
-              <h2>{post.title}</h2>
-              <p>{post.body}</p>
+              <img src={blogArray[blogId]} /> 
+              {/* {postImage} */}
+              <h3>{post.title}</h3>
+              {/* <p>{post.body}</p> */}
             </Link>
-          ))}
+})}
       </div>
 
       <div className="pagination-controls">
