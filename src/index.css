@@ -136,7 +136,6 @@ body {
 /* Details page */
 
 .details-container {
-  /* max-width: 800px; */
   margin: 0 auto;
   padding: 1rem 3rem;
   color: white;
@@ -173,23 +172,38 @@ body {
 }
 
 .comments-title {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 25px;
+  margin-top: 30px;
+  margin-bottom: 0;
+  color: rgb(0, 255, 132);
 }
 
 .comment {
-  border: 1px solid #ddd;
+  border-bottom: 1px solid #ddddddcc;
   padding: 10px;
   margin-bottom: 10px;
 }
 
+.user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-photo {
+  width: 40px;
+  height: 40px;
+}
+
 .comment-name {
-  font-size: 18px;
-  margin-bottom: 5px;
+  font-size: 25px;
+  color: rgba(46, 214, 63, 0.67)
 }
 
 .comment-body {
-  font-size: 14px;
+  font-size: 19px;
+  word-spacing: 3px;
+  letter-spacing: 1px;
 }
 
 .error-message {
