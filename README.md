@@ -17,7 +17,6 @@
   - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
-  - [Deployment](#triangular_flag_on_post-deployment)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -45,10 +44,6 @@ Discover a world of captivating blog posts with our user-friendly Blog App! Dive
     <li><a href="https://github.com/">GitHub</a></li>
   </ul>
 </details>
-
-## 🚀 Live Demo <a name="live-demo"></a>
-
-<a href="">Live</a>
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
