@@ -4,7 +4,7 @@ import axios from 'axios';
 export const initialState = {
   posts: [],
   currentPage: 1,
-  itemsPerPage: 50,
+  itemsPerPage: 20,
   currentPosts: [],
   isLoading: false,
   error: '',
